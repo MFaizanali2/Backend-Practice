@@ -1,41 +1,39 @@
-import express from "express"
-import dotenv from "dotenv"
-import comments from "./comments.js"
+import express from 'express'
+import dotenv from 'dotenv'
+import ProductRoutes from './routes/ProductRoute.js'
+import comment from './comments.js'
 
 const app = express()
 dotenv.config()
 
-const PORT = process.env.PORT || 3000;
-// const PORT = 3000;
+// const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
-app.get('/',(req, res)=>{
-    res.status(200).send("hello world!")
+app.get('/',(req,res)=>{
+    res.status(200).send('Welcome to Backend!')
 })
-// app.get('/about',(req, res)=>{
-//     res.status(200).send("hello About!")
-// })
-// app.get('/product',(req, res)=>{
-//     res.status(200).send("hello Product!")
-// })
-// app.get('/user/:id',(req, res)=>{
-//     const id = req.params.id;
-//     res.status(200).send(`welcome to product page ${id}`)
-// })
-// app.get('*',(req, res)=>{
-//     res.status(200).send("page not found")
-// })
-// app.get('/comments',(req, res)=>{
-//     res.status(200).send({status:200, message:"success",data:comments})
-// })
-// status , message data;
 
-// app.get('/login',(req, res)=>{
-//     res.status(200).send({status:200, message:"you are sucessfully login"})
+app.get('/products', ProductRoutes)
+app.get('/products/:id', ProductRoutes)
+
+// app.get('/profile',(req,res)=>{
+//     res.status(200).send('Welcome to Your Profile!')
 // })
 
+// app.get('/profile/:id',(req,res)=>{
+//     const id = req.params.id
+//     res.status(200).send(`Welcome to Your Profile ${id}`)
+// })
+
+// app.get('*',(req,res)=>{
+//     res.status(200).send('Page not found!')
+// })
+
+// app.get('/comment',(req,res)=>{
+//     res.status(200).send({status:200,message:'Welcome to Your Product',data:comment})
+// })
 
 
-
-app.listen(PORT, ()=>{
-    console.log(`server is running at ${PORT}`)
+app.listen(PORT,(req,res)=>{
+    console.log(`server started at ${PORT}`)
 })

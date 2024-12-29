@@ -1,9 +1,15 @@
-import express from "express";
-import comments from "../comments.js";
-// import { status } from "express/lib/response";
+import express from 'express'
+import comment from '../comments.js'
 
-const ProductRoute = express.Router()
+const ProductRoutes = express.Router()
 
-ProductRoute.get('/',(req,res)=>{
-    res.status(200).send({status:200,message:"success",data:comments})
+ProductRoutes.get('/products',(req, res)=>{
+    res.status(200).send({status:200,message:'succes',data:comment})
 })
+
+ProductRoutes.get('/products/:id',(req,res)=>{
+    const id = req.params.id
+    res.status(200).send({status:200,message:`Welcome to Your Product ${id}`,data:[]})
+})
+
+export default ProductRoutes;
