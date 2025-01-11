@@ -1,42 +1,41 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import TaskRouter from './routes/TaskRoutes.js';
 import mongoose from 'mongoose';
-import TaskRoutes from './routes/TaskRoutes.js';
-// import taskschema from './model/taskModal.js';
 
 const app = express();
-dotenv.config();
+dotenv.config()
 
-app.use(express.json());
+app.use(express.json())
 
 const PORT = process.env.PORT || 8080;
 const MONGODB_URL = process.env.MONGODB_URL;
 
-// mongoose.connect(MONGODB_URL)
-// .then(()=>{
-//     console.log('Connect Succesfully')
-// })
-// .catch((error)=>{
-//     console.log('coonection failed', error)
-// })
-
-const dbConnection = async() =>{
-    try{
-        await mongoose.connect(MONGODB_URL)
-        console.log('Connect Succesfully')
-    }
-    catch(error){
-        console.log('coonection failed', error)
-    }
-}
-
 app.get('/',(req,res)=>{
-    res.send("welcome to backend!")
+    res.send("welcome back to backend")
 })
 
-app.use('/routes',TaskRoutes);
-// app.use('/tasks',taskschema);
+app.use('/tasks', TaskRouter)
+
+// mongoose.connect(MONGODB_URL)
+// .then(()=>{
+//     console.log("db connection succesfully")
+// })
+// .catch((error)=>{
+//     console.log("db connection Failed", error)
+// })
+
+const dbConnection = async()=>{
+    try{
+        await mongoose.connect(MONGODB_URL)
+        console.log("db connection succesfully")
+    }catch(error){
+        console.log("db connection Failed", error)
+    }
+} 
+dbConnection()
+
 
 app.listen(PORT,()=>{
-    console.log(`server started at ${PORT}`)
+    console.log("Server Started" , PORT)
 })
