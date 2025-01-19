@@ -1,11 +1,8 @@
-import {configureStore} from '@reduxjs/toolkit'
-import taskReducer from './features/TaskReducer'
-
+import { configureStore } from '@reduxjs/toolkit'
+import TaskReducer from './features/TaskReducer.js'
 
 export const store = configureStore({
-    reducer: {
-        tasks: taskReducer,
-    },
+  reducer: {
+    tasks: TaskReducer
+  },
 })
-
-// video 53 min
