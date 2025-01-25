@@ -1,18 +1,32 @@
-import Login from './components/login/login'
-import Register from './components/Register/register'
+// import ForgotPassword from "../components/ForgotForm";
+// import ResetPassword from "../components/ResetPasswordForm";
+// import Dashboard from "../pages/Dashboard/dashboard";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
-export const router =[
+export const router = [
     {
         path: '/',
-        Element: <Login />
+        component: <Login/>,
     },
     {
         path: '/login',
-        Element: <Login />
+        component: <Login/>,
     },
     {
         path: '/register',
-        Element: <Register />
-    }
+        component: <Register/>,
+    },
+    // {
+    //     path: '/forgot-password',
+    //     component: <ForgotPassword/>,
+    // },
+    // {
+    //     path: '/reset-password/:token',
+    //     component: <ResetPassword/>,
+    // },
+    // {
+    //     path: '/dashboard',
+    //     component: <Dashboard/>,
+    // }
 ]
-
